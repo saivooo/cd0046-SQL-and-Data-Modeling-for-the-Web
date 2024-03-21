@@ -231,7 +231,7 @@ class ArtistForm(Form):
         'website_link'
      )
 
-    seeking_venue = BooleanField( 'seeking_venue' )
+    seeking_venue = SelectField('seeking_venue', choices=[('True', 'True'), ('False', 'False')])
 
     seeking_description = StringField(
             'seeking_description'
