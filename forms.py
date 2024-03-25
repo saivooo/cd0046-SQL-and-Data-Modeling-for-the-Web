@@ -3,18 +3,20 @@ from flask_wtf import Form
 from wtforms import StringField, SelectField, SelectMultipleField, DateTimeField, BooleanField
 from wtforms.validators import DataRequired, AnyOf, URL
 
-class ShowForm(Form):
-    artist_id = StringField(
-        'artist_id'
-    )
-    venue_id = StringField(
-        'venue_id'
-    )
-    start_time = DateTimeField(
-        'start_time',
-        validators=[DataRequired()],
-        default= datetime.today()
-    )
+# class ShowForm(Form):
+#     artist_id = SelectField(
+#         'artist_id',
+#         choices=[(artist.id, artist.name) for artist in Artist.query.all()]
+#     )
+#     venue_id = SelectField(
+#         'venue_id',
+#         choices=[(venue.id, venue.name) for venue in Venue.query.all()]
+#     )
+#     start_time = DateTimeField(
+#         'start_time',
+#         validators=[DataRequired()],
+#         default=datetime.today()
+#     )
 
 class VenueForm(Form):
     name = StringField(
@@ -120,7 +122,7 @@ class VenueForm(Form):
         'website_link'
     )
 
-    seeking_talent = BooleanField( 'seeking_talent' )
+    seeking_talent = SelectField('seeking_talent', choices=[('True', 'True'), ('False', 'False')])
 
     seeking_description = StringField(
         'seeking_description'

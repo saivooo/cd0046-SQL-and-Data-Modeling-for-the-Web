@@ -13,6 +13,9 @@
 				</div>
 			</a>
 		</li>
+		<form action="/venues/delete/{{ venue.id }}" id="deleteForm">
+			<input type="submit" value="Delete Venue">
+		</form>
 		{% endfor %}
 	</ul>
 {% endfor %}

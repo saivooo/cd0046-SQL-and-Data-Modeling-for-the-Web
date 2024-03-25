@@ -2,21 +2,29 @@
 {% block title %}New Show Listing{% endblock %}
 {% block content %}
   <div class="form-wrapper">
-    <form method="post" class="form">
+    <form method="post">
       <h3 class="form-heading">List a new show</h3>
       <div class="form-group">
         <label for="artist_id">Artist ID</label>
-        <small>ID can be found on the Artist's Page</small>
-        {{ form.artist_id(class_ = 'form-control', autofocus = true) }}
+        <small>Don't see your artist? List him <a href="/artists/create">here</a></small>
+        <select name="artist_id" class="form-control" autofocus>
+          {% for artist in artists %}
+          <option value="{{ artist.id }}">{{ artist.name }}</option>
+          {% endfor %}
+        </select>
       </div>
       <div class="form-group">
         <label for="venue_id">Venue ID</label>
-        <small>ID can be found on the Venue's Page</small>
-        {{ form.venue_id(class_ = 'form-control', autofocus = true) }}
+        <small>Don't see a venue? List it <a href="/venues/create">here</a></small>
+        <select name="venue_id" class="form-control" autofocus>
+          {% for venue in venues %}
+          <option value="{{ venue.id }}">{{ venue.name }}</option>
+          {% endfor %}
+        </select>
       </div>
       <div class="form-group">
           <label for="start_time">Start Time</label>
-          {{ form.start_time(class_ = 'form-control', placeholder='YYYY-MM-DD HH:MM', autofocus = true) }}
+          <input type="datetime-local" name="start_time" class="form-control" autofocus>
         </div>
       <input type="submit" value="Create Venue" class="btn btn-primary btn-lg btn-block">
     </form>
